@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Card</title>
+    <meta name="Contact Card" content="Contact Card">
+   <link rel="stylesheet" href="contactcard.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+   </script>
+   <script type="text/javascript">
+   $(document).ready(function(){
+
+     $('#submit').click(function(){
+       $('tbody').append('<tr><td>'+$("#firstname").val()+' '+$("#lastname").val()+'<p>'+'Click for description!'+'</p><p id="back">'+$("#description").val()+'</p></td></tr>');
+       $("#firstname").val($("#firstname").attr('value'));
+       $("#lastname").val($("#lastname").attr('value'));
+       $("#description").val($("#description").attr('value'));
+       alert('Good to have you here!');
+       $("#firstname").val('');
+       $("#lastname").val('');
+       $("#description").val('');
+       return false;
+     });
+
+    $(document).on('click','td', function() {
+      $(this).children().toggle();
+    });
+   });
+
+   </script>
+</head>
+
+<body>
+
+<form action="process.php" method="post">
+   <p>First Name:<input type="text" id="firstname" name="firstname"></p>
+   <p>Last Name:<input type="text" id="lastname" name="lastname"></p>
+   <p>Description:<textarea id="description" name="description"></textarea></p>
+   <p><input type="submit" id="submit" value="Add User"></p>
+ </form>
+
+
+<table style="width:50%">
+  <thead>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+</body>
+
+</html>
